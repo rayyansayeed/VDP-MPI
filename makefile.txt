@@ -1,0 +1,11 @@
+default: VDP_MPI
+
+VDP_MPI.o: VDP_MPI.c $(HEADERS)
+	mpicc -std=c99 -c VDP_MPI.c -o VDP_MPI.o
+
+VDP_MPI: VDP_MPI.o
+	mpicc -std=c99 VDP_MPI.o -o VDP_MPI -lmpi -lm
+
+clean:
+	-rm -f VDP_MPI.o
+	-rm -f VDP_MPI
